@@ -5,10 +5,15 @@ import os
 class StableDiffusionWrapper:
     def __init__(self) -> None:
         repo_id = "stabilityai/stable-diffusion-2-base"
-        torch.set_num_threads(8)
-        num_cores = os.cpu_count()
-        print(f"--> Using {num_cores} cores")
-        torch.set_num_threads(num_cores)
+        # torch.set_num_threads(8)
+        # num_cores = os.cpu_count()
+        # print(f"--> Using {num_cores} cores")
+        # torch.set_num_threads(num_cores)
+        # Set the device to use the first GPU
+        torch.cuda.set_device(0)
+
+        # Enable memory growth on the selected GPU
+        torch.cuda.set_memory_growth(True)
         pipe = DiffusionPipeline.from_pretrained(
             repo_id, revision="fp16",
             torch_dtype=torch.float16
