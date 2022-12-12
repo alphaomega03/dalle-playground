@@ -17,6 +17,9 @@ class StableDiffusionWrapper:
 
         pipe.scheduler = DPMSolverMultistepScheduler.from_config(
             pipe.scheduler.config)
+
+        pipe.safety_checker = lambda images, clip_input: (images, False)
+        
         self.pipe = pipe.to("cuda")
 
             
