@@ -4,7 +4,7 @@ import os
 
 class StableDiffusionWrapper:
     def __init__(self) -> None:
-        repo_id = "hakurei/waifu-diffusion"
+        repo_id = "stabilityai/stable-diffusion-2-base"
         # torch.set_num_threads(8)
         # num_cores = os.cpu_count()
         # print(f"--> Using {num_cores} cores")
