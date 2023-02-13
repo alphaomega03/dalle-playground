@@ -34,5 +34,6 @@ class StableDiffusionWrapper:
         # if max_memory_allocated > memory_allocated:
         #     torch.cuda.empty_cache()
         prompt = [text_prompt] * num_images
+        print(f"--> Generating {num_images} images from text prompt [{text_prompt}], {prompt}")
         images = self.pipe(prompt, num_inference_steps=num_images).images
         return images
